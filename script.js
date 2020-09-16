@@ -89,7 +89,7 @@ function setText() { // Fills the textboxes with data from local storage
     $("#textFifteen").text(localStorage.getItem("textFifteen"));
 }
 
-function setColor(textEl) { // Sets the color of the textboxes background color to show if that time has past or is close to passing
+function setColor(textEl) { // Sets the color of the textboxes background color to show if that time has passed or is close to passing
     let currentTime = (+moment().format("H") );
     if (textEl.attr("data-time") <= currentTime) {
         textEl.css("background-color", "lightgrey");
