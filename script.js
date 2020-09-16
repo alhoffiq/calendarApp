@@ -2,8 +2,23 @@ $(document).ready(function () {
     $(".date").text(moment().format('MMMM Do YYYY, h:mm a')) // Sets current date and time on screen
 
     setText();
+    setColor($("#textOne"));
+    setColor($("#textTwo"));
+    setColor($("#textThree"));
+    setColor($("#textFour"));
+    setColor($("#textFive"));
+    setColor($("#textSix"));
+    setColor($("#textSeven"));
+    setColor($("#textEight"));
+    setColor($("#textNine"));
+    setColor($("#textTen"));
+    setColor($("#textEleven"));
+    setColor($("#textTwelve"));
+    setColor($("#textThirteen"));
+    setColor($("#textFourteen"));
+    setColor($("#textFifteen"));
 
-    $("#saveOne").on("click", function () {
+    $("#saveOne").on("click", function () { // Click events for each of the buttons
         getText($("#textOne"), "textOne");
     })
     $("#saveTwo").on("click", function () {
@@ -48,11 +63,11 @@ $(document).ready(function () {
     $("#saveFifteen").on("click", function () {
         getText($("#textFifteen"), "textFifteen");
     })
-    
+
 })
 
-function getText(textNumber, number) { // Gets the text from the textbox and saves it to local storage
-    let text = textNumber.val();
+function getText(textEl, number) { // Gets the text from the textbox and saves it to local storage
+    let text = textEl.val();
     localStorage.setItem(number, text)
 }
 
@@ -72,4 +87,17 @@ function setText() { // Fills the textboxes with data from local storage
     $("#textThirteen").text(localStorage.getItem("textThirteen"));
     $("#textFourteen").text(localStorage.getItem("textFourteen"));
     $("#textFifteen").text(localStorage.getItem("textFifteen"));
+}
+
+function setColor(textEl) { // Sets the color of the textboxes background color to show if that time has past or is close to passing
+    let currentTime = (+moment().format("H") );
+    if (textEl.attr("data-time") <= currentTime) {
+        textEl.css("background-color", "lightgrey");
+    }
+    else if (textEl.attr("data-time") == currentTime + 1) {
+        textEl.css("background-color", "gold");
+    }
+    else if (textEl.attr("data-time") > currentTime) {
+        textEl.css("background-color", "lightblue");
+    }
 }
