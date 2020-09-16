@@ -91,10 +91,10 @@ function setText() { // Fills the textboxes with data from local storage
 
 function setColor(textEl) { // Sets the color of the textboxes background color to show if that time has passed or is close to passing
     let currentTime = (+moment().format("H") );
-    if (textEl.attr("data-time") <= currentTime) {
+    if (textEl.attr("data-time") < currentTime) {
         textEl.css("background-color", "lightgrey");
     }
-    else if (textEl.attr("data-time") == currentTime + 1) {
+    else if (textEl.attr("data-time") == currentTime) {
         textEl.css("background-color", "gold");
     }
     else if (textEl.attr("data-time") > currentTime) {
